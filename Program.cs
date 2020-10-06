@@ -147,6 +147,12 @@ class Customer
         //Console.WriteLine("Constructor was called");
         Customer.m_count++;
     }
+
+    public static void GetInfo(ref Customer val)
+    {
+        Console.WriteLine($"First name: {val.FirstName} Second name {val.SecondName} Middle Name {val.MiddleName}");
+        Console.WriteLine($"Id: {val.Id} Adress {val.Adress} Card {val.Card} Balance {val.Balance}");
+    }
 }
 
 namespace lab3
