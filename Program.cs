@@ -2,82 +2,22 @@
 
 class Customer
 {
-    Customer()
-    {
-
-    }
-
-    public int Id
-    {
-        set
-        {
-            m_id = value;
-        }
-        get { return m_id; }
-    }
-
-    public string FirstName
-    {
-        set
-        {
-            m_firstName = value;
-        }
-        get { return m_firstName; }
-    }
-
-    public string SecondName
-    {
-        set
-        {
-            m_secondName = value;
-        }
-        get { return m_secondName; }
-    }
-
-    public string MiddleName
-    {
-        set
-        {
-            m_middleName = value;
-        }
-        get { return m_middleName; }
-    }
-
-    public string Adress
-    {
-        set
-        {
-            m_adress = value;
-        }
-        get { return m_adress; }
-    }
-
-    public int Card
-    {
-        set
-        {
-            m_card = value;
-        }
-        get { return m_card; }
-    }
-
-    public int Balance
-    {
-        set
-        {
-            m_balance = value;
-        }
-        get { return m_balance; }
-    }
-
-    private int m_id;
+    
+    private readonly uint m_id;
     private string m_firstName;
     private string m_secondName;
     private string m_middleName;
     private string m_adress;
-    private int m_card;
-    private int m_balance;
+    private uint m_card;
+    private int m_balance = 0;
 
+    private static uint m_count = 0;
+
+    private void IncrementCout()
+    {
+        //Console.WriteLine("Constructor was called");
+        Customer.m_count++;
+    }
 }
 
 namespace lab3
@@ -86,7 +26,11 @@ namespace lab3
     {
         static void Main(string[] args)
         {
-            
+            for (byte i = 0; i < 255; i++)
+            {
+                var customer = new Customer();
+            }
+            Console.WriteLine(Customer.Count);
         }
     }
 }
