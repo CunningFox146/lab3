@@ -187,6 +187,17 @@ namespace lab3
                     Console.WriteLine(customer);
                 }
             }
+
+            var v = new {
+                Id = 0,
+                FirstName = "Mike",
+                SecondName = "Max",
+                MiddleName = "meh",
+                Adress = "501",
+                Card = 10,
+                Balance = 0,
+            };
+            Console.WriteLine(v);
         }
     }
 }
