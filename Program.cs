@@ -128,15 +128,11 @@ partial class Customer
         return false;
     }
 
-    public override int GetHashCode()
-    {
-        return (m_id > 0) ? (int)m_id : base.GetHashCode();
-    }
+    public static void GetInfo(ref Customer val) => Console.WriteLine(val.ToString());
 
-    public override string ToString()
-    {
-        return $"First name: {FirstName} Second name {SecondName} Middle Name {MiddleName}\nId: {Id} Adress {Adress} Card {Card} Balance {Balance}";
-    }
+    public override int GetHashCode() => (m_id > 0) ? (int)m_id : base.GetHashCode();
+
+    public override string ToString() => $"First name: {FirstName} Second name {SecondName} Middle Name {MiddleName}\nId: {Id} Adress {Adress} Card {Card} Balance {Balance}";
 
     private Customer(int a) { }
 
@@ -151,16 +147,7 @@ partial class Customer
 
     private static uint m_count = 0;
 
-    private void IncrementCout()
-    {
-        //Console.WriteLine("Constructor was called");
-        Customer.m_count++;
-    }
-
-    public static void GetInfo(ref Customer val)
-    {
-        Console.WriteLine(val.ToString());
-    }
+    private void IncrementCout() => Customer.m_count++;
 }
 
 namespace lab3
