@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
-class Customer
+partial class Customer
 {
     public Customer()
     {
@@ -21,7 +22,7 @@ class Customer
         m_card = m_id;
         IncrementCout();
     }
-
+    
     public Customer(string firstName, string secondName, string middleName, uint card = 0)
     {
         m_id = Customer.Count;
@@ -34,6 +35,7 @@ class Customer
 
     ~Customer()
     {
+        //Console.Write("~Customer");
         Customer.m_count--;
     }
 
@@ -42,21 +44,8 @@ class Customer
         //Console.WriteLine("Static Constructor was called");
     }
 
-    public void DoBalanceDelta(ref float delta, out bool success)
-    {
-        float val = m_balance + delta;
-        if (val < 0)
-        {
-            Console.WriteLine($"Transaction failed. Insufficient funds. Your current balance is {Balance}, but you required {-delta}");
-            success = true;
-        }
-        else
-        {
-            m_balance = val;
-            success = false;
-        }
-    }
-
+    //public partial void DoBalanceDelta(ref float delta, out bool success);
+    
     public uint Id
     {
         set
