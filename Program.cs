@@ -172,7 +172,20 @@ namespace lab3
             Array.Sort(customers);
             foreach (var customer in customers)
             {
-                Console.WriteLine(customer.ToString());
+                Console.WriteLine(customer);
+            }
+
+            int[] cardNum = new int[2];
+            Console.WriteLine("\nInput min and max card values");
+            cardNum[0] = Convert.ToInt32(Console.ReadLine());
+            cardNum[1] = Convert.ToInt32(Console.ReadLine());
+
+            foreach (var customer in customers)
+            {
+                if (customer.Card >= cardNum[0] && customer.Card <= cardNum[1])
+                {
+                    Console.WriteLine(customer);
+                }
             }
         }
     }
