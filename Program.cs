@@ -133,6 +133,11 @@ partial class Customer
         return (m_id > 0) ? (int)m_id : base.GetHashCode();
     }
 
+    public override string ToString()
+    {
+        return $"First name: {FirstName} Second name {SecondName} Middle Name {MiddleName}\nId: {Id} Adress {Adress} Card {Card} Balance {Balance}";
+    }
+
     private Customer(int a) { }
 
     private const string m_defaultName = "Unknown";
@@ -154,8 +159,7 @@ partial class Customer
 
     public static void GetInfo(ref Customer val)
     {
-        Console.WriteLine($"First name: {val.FirstName} Second name {val.SecondName} Middle Name {val.MiddleName}");
-        Console.WriteLine($"Id: {val.Id} Adress {val.Adress} Card {val.Card} Balance {val.Balance}");
+        Console.WriteLine(val.ToString());
     }
 }
 
