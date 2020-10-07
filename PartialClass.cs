@@ -18,6 +18,17 @@ partial class Customer
             success = false;
         }
     }
+
+    public void DoBalanceDelta(float delta)
+    {
+        float val = m_balance + delta;
+        if (val < 0)
+        {
+            Console.WriteLine($"Transaction failed. Insufficient funds. Your current balance is {Balance}, but you required {-delta}");
+            return;
+        }
+        m_balance = val;
+    }
 }
 
 namespace lab3

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-partial class Customer
+partial class Customer : IComparable
 {
     public Customer()
     {
@@ -33,19 +33,12 @@ partial class Customer
         IncrementCout();
     }
 
-    ~Customer()
-    {
-        //Console.Write("~Customer");
-        Customer.m_count--;
-    }
+    ~Customer() => Customer.m_count--;
 
-    static Customer()
-    {
-        //Console.WriteLine("Static Constructor was called");
-    }
+    static Customer() => Console.WriteLine("Static Constructor was called");
 
     //public partial void DoBalanceDelta(ref float delta, out bool success);
-    
+
     public uint Id
     {
         set
@@ -134,6 +127,16 @@ partial class Customer
 
     public override string ToString() => $"First name: {FirstName} Second name {SecondName} Middle Name {MiddleName}\nId: {Id} Adress {Adress} Card {Card} Balance {Balance}";
 
+    public int CompareTo(object obj)
+    {
+        Customer other = obj as Customer;
+        if (other != null)
+        {
+            return m_balance.CompareTo(other.Balance);
+        }
+        throw new Exception("Failed to compare Customer");
+    }
+
     private Customer(int a) { }
 
     private const string m_defaultName = "Unknown";
@@ -156,11 +159,21 @@ namespace lab3
     {
         static void Main(string[] args)
         {
-            for (byte i = 0; i < 255; i++)
+            Random rnd = new Random();
+            
+            Customer[] customers = new Customer[3];
+            customers[0] = new Customer();
+            customers[0].DoBalanceDelta(rnd.Next(0, 10));
+            customers[1] = new Customer("Mike", "Hay", "Bay");
+            customers[1].DoBalanceDelta(rnd.Next(0, 10));
+            customers[2] = new Customer("Drie", "Afs", "Ball", 5);
+            customers[2].DoBalanceDelta(rnd.Next(0, 10));
+
+            Array.Sort(customers);
+            foreach (var customer in customers)
             {
-                var customer = new Customer();
+                Console.WriteLine(customer.ToString());
             }
-            Console.WriteLine(Customer.Count);
         }
     }
 }
