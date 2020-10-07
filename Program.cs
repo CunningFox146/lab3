@@ -118,6 +118,16 @@ partial class Customer
         get { return m_count; }
     }
 
+    public override bool Equals(object obj)
+    {
+        if (obj is Customer)
+        {
+            var customer = (Customer)obj;
+            return customer.Id == m_id;
+        }
+        return false;
+    }
+
     private Customer(int a) { }
 
     private const string m_defaultName = "Unknown";
