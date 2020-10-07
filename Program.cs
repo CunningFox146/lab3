@@ -128,6 +128,11 @@ partial class Customer
         return false;
     }
 
+    public override int GetHashCode()
+    {
+        return (m_id > 0) ? (int)m_id : base.GetHashCode();
+    }
+
     private Customer(int a) { }
 
     private const string m_defaultName = "Unknown";
